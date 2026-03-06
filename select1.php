@@ -8,7 +8,11 @@
 
     <?php
     require "connect.php";
-    $sql = "SELECT * FROM customer";
+    $sql = "SELECT *
+FROM customer, country 
+WHERE customer.CountryCode = country.CountryCode 
+AND customer.CountryCode = 'TH'
+AND customer.Email LIKE '@hotmail.com'";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
