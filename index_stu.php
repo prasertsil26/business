@@ -19,7 +19,7 @@
                         <tr>
                             <th width="10%">รหัสลูกค้า</th>
                             <th width="20%">ชื่อ-นามสกุล</th>
-
+                      
                             <th width="5%">แก้ไข</th>
                             <th width="5%">ลบ</th>
                         </tr>
@@ -28,32 +28,18 @@
                     <tbody>
                         <?php
                         //https://pad.riseup.net/p/np-db-keep
-
-                        $sql = "SELECT * FROM customer";
+ 
+                        $sql =   
                         $stmt = $conn->prepare($sql);
-                        $stmt->execute();
-                        $result = $stmt->fetchAll();
-
-                        foreach ($result as $r) {
-                        ?>
+  
+                        foreach ($result as $r) { ?>
                             <tr>
                                 <td><?= $r['CustomerID'] ?></td>
-                                <td><?= $r['CustomerName'] ?></td>
+                             
+                                <td><?= $r['CountryName'] ?></td>
                                 <td><?= $r['OutstandingDebt'] ?></td>
-
-                                <td>
-                                    <a href="updateCustomerForm.php?CustomerID=<?= $r['CustomerID'] ?>"
-                                        class="btn btn-warning btn-sm">แก้ไข</a>
-                                </td>
-
-                                <td>
-                                    <a href="deleteCustomer.php?CustomerID=<?= $r['CustomerID'] ?>"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="return confirm('ยืนยันการลบข้อมูล!!');">
-                                        ลบ
-                                    </a>
-                                </td>
-
+                                <td><a href="updateCustomerForm.php?CustomerID=<?=              ?>" class="btn btn-warning btn-sm">แก้ไข</a></td>
+                                <td><a href="deleteCustomer.php?CustomerID=<?= $r['CustomerID'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('ยืนยันการลบข้อมูล !!');">ลบ</a></td>
                             </tr>
                         <?php
                         }
